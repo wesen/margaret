@@ -1,0 +1,106 @@
+msgid "by "
+msgstr "de "
+
+msgid "Reply"
+msgstr "Repondre"
+
+msgid "anonymous"
+msgstr "anonyme"
+
+msgid "on "
+msgstr "le "
+
+msgid "created by "
+msgstr "cree par "
+
+msgid "last modified by "
+msgstr "modifie par "
+
+msgid "No more threads"
+msgstr "Pas de fils suivants"
+
+msgid "Previous 5 threads"
+msgstr "5 derniers fils"
+
+msgid "Next 5 threads"
+msgstr "5 prochains fils"
+
+msgid "New thread"
+msgstr "Nouveau fil"
+
+msgid "User homepage"
+msgstr "Page personnelle"
+
+msgid "Thread index"
+msgstr "Index des fils"
+
+msgid "Not authorized!"
+msgstr "Vous n'etes pas authorise(e)!"
+
+msgid "Welcome, "
+msgstr "Bienvenue, "
+
+msgid "Username:"
+msgstr "Nom d'utilisateur:"
+
+msgid "Password:"
+msgstr "Mot de passe:"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "Password changed, please reload the page."
+msgstr "Le mot de passe a ete change, veuillez recharger la page."
+
+msgid "Passwords were not equal - password not changed."
+msgstr "Les mots de passes n'etaient pas egaux, "
+"le mot de passe n'a pas ete change"
+
+msgid "Welcome to your private page, "
+msgstr "Bienvenue sur votre page personnelle, "
+
+msgid "Change your password:"
+msgstr "Changez votre mot de passe:"
+
+msgid "Password (again):"
+msgstr "Mot de passe (a nouveau):"
+
+msgid "Change password"
+msgstr "Changer"
+
+msgid "Logout"
+msgstr "Logout"
+
+msgid "User list"
+msgstr "Liste des utilisateurs"
+
+msgid "No such posting"
+msgstr "Pas de tel message"
+
+msgid "No such thread"
+msgstr "Pas de tel fil"
+
+msgid "Create new thread"
+msgstr "Creer un nouveau fil"
+
+msgid "MARGARET"
+msgstr "MARGARET"
+
+msgid "MARGARET Users"
+msgstr "MARGARET Utilisateurs"
+
+msgid "MARGARET Postings"
+msgstr "MARGARET Messages"
+
+msgid "MARGARET Threads"
+msgstr "MARGARET Fils"
+
+msgid "MARGARET Reply to post"
+msgstr "MARGARET Repondre a un message"
+
+msgid "MARGARET New thread"
+msgstr "MARGARET Nouveau fil"
+
+msgid "MARGARET User page"
+msgstr "MARGARET Page d'utilisateur"
+
