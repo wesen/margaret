@@ -1,0 +1,80 @@
+body
+{
+   font-family: helvetica;
+}
+
+form {
+  background-color: #cccccc;
+  border: 1px solid #006699;
+  margin: 15px auto;
+  padding: 0.2em;
+  vertical-align: middle;
+  width: 70%;
+  text-align:center;
+}
+
+p
+{
+  padding: 0;
+  margin: 0;
+}
+
+dd {
+  margin-left: 0;
+}
+
+a:link {
+  color: #000000;
+}
+
+a:visited {
+  color: #444444;
+}
+
+.header a {
+  margin: 5px;
+}
+
+form.post-form {
+  width: 90%;
+}
+
+table.post-header {
+  border: 1px solid #006699;
+  background-color: #eeeeee;
+}
+
+table.thread-header {
+  border: 2px dotted red;
+  background-color: #eeeeee;
+  margin: 15px;
+  width: 70%;
+}
+
+.blog-post {
+  margin: 15px;
+  width: 80%;
+}
+
+.post {
+  margin: 15px;
+}
+
+.post .commands {
+  font-weight: normal;
+  float: right;
+  margin-left: 3em;
+}
+
+.blog-post td.title, .post td.title, .thread td.title {
+  font-weight: bold;
+  background-color: #cccccc;
+}
+
+.blog-post td.author, .blog-post td.date, .post td.author, .post td.date, .thread td.author, .thread td.date {
+  font-size: 70%;
+}
+
+.blog-post td.body, .post td.post-body {
+  background-color: #cccccc;
+}

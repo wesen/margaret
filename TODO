@@ -1,0 +1,64 @@
+X Authentication
+  X capabilities
+  X around method for content
+  X logout function
+
+X poor mans persistence (?)
+
+X Form dispatch
+
+X Change password
+  X After methods for updating DB on users
+
+X Neue Tabellen einspielen
+
+X List thread
+  X Threadanzeige (bei k5 gucken?)
+X Post message
+
+X Coole Benutzerfuehrung
+  X Front page
+  X Design
+    X Form width??
+
+X DB: threads in eigene Tabelle, damit Datum, LIMIT, usw...
+  X Handler fixen
+
+X send-request-headers weg, dafuer :around broesel
+  X Call next method fixen
+
+X escape SQL strings
+  X escape HTML strings
+
+X multiple SQL commands using views
+
+X Apache files schreiben
+
+--- Release
+
+X Localization
+  - Akzente im franzoesischen
+
+- mehrere Instanzen von Margaret starten
+  - testen
+
+- Tolle SQL baueme bauen
+
+- url in postings
+
+- Logging
+
+- form-case neu schreiben, damit variablen gebindet werden
+
+- Input genau checken (Security!)
+
+- Doku schreiben
+
+- page-header soll string bringen (??)
+  - CLOS method combination?
+
+- Delete users
+
+- Nicht unique fehler von der DB abfangen (restart-case, handler-case)
+
+- Araneida errors on bad http requests
