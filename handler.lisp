@@ -107,7 +107,7 @@
     (page-unauth-body handler method request)))
 
 (defmethod page-unauth-body ((handler margaret-auth-handler) method request)
-  #l"Not authorized!")
+  (list #l"Not authorized!"))
 
 (defmethod page-header revlist ((handler margaret-auth-handler) method request)
   `((span :class auth-header)
