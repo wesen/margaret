@@ -17,16 +17,20 @@
 					  "variables" "db"))
 	       (:file "post" :depends-on ("package" "localization"
 					  "variables" "db"))
-	       (:file "blog" :depends-on ("package" "localization" "variables"
-					  "db"))
 	       (:file "handler" :depends-on
 		      ("package" "variables" "localization" "html"))
 	       (:file "user-handler" :depends-on
 		      ("package" "variables" "localization" "html"
 		       "handler" "user"))
+	       (:file "xml" :depends-on
+		      ("package"))
+	       (:file "rss" :depends-on
+		      ("package" "xml"))
+	       (:file "blog" :depends-on ("package" "localization" "variables"
+					  "db" "rss"))
 	       (:file "blog-handler" :depends-on
 		      ("package" "variables" "localization" "html"
-		       "handler" "user"))
+		       "handler" "user" "blog"))
 	       (:file "forum-handler" :depends-on
 		      ("package" "variables" "localization" "html"
 		       "handler" "user" "post"))))

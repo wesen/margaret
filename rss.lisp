@@ -8,7 +8,14 @@
    (items :initarg :items :accessor rss-feed-items)))
 
 (defmethod rss-to-xml ((feed rss-feed))
-  (html `()))
+  (xml `(() ((xml version "1.0"))
+	    (("rdf:RDF" "xmlns:rdf" "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			:xmlns "http://purl.org/rss/1.0/")
+	     ,(rss-to-xml (rss-feed-channel feed))
+	     ,(if (rss-feed-image feed)
+		(rss-to-xml (rss-feed-image feed))
+		"")
+	     ,@(mapcar #'rss-to-xml (rss-feed-items feed))))))
 
 (defclass rss-channel ()
   ((about :initarg :about :accessor rss-channel-about)
@@ -20,10 +27,10 @@
    (items :initform nil :initarg :items :accessor rss-channel-items)))
 
 (defmethod rss-to-xml ((chan rss-channel))
-  (html `((channel "rdf:about" ,(rss-channel-about chan))
-	  (title ,(rss-channel-title chan))
+  (xml `((channel "rdf:about" ,(rss-channel-about chan))
+	  (title ,(xml-escape (rss-channel-title chan)))
 	  (link ,(rss-channel-link chan))
-	  (description ,(rss-channel-desc chan))
+	  (description ,(xml-escape (rss-channel-desc chan)))
 	  ,(if (rss-channel-image chan)
 	     `((image "rdf:resource" ,(rss-channel-image chan)))
 	     "")
@@ -37,29 +44,44 @@
 	     ""))))
 
 (defclass rss-image ()
-  ((title :initarg :title :accessor rss-image-title)
+  ((about :initarg :about :accessor rss-image-about)
+   (title :initarg :title :accessor rss-image-title)
    (url :initarg :url :accessor rss-image-url)
    (link :initarg :link :accessor rss-image-link)))
 
 (defmethod rss-to-xml ((image rss-image))
-  (html `()))
+  (xml `((image "rdf:about" ,(rss-image-about image))
+	 (title ,(xml-escape (rss-image-title image)))
+	 (url ,(rss-image-url image))
+	 (link ,(rss-image-link image)))))
 
 (defclass rss-item ()
-  ((title :initarg :title :accessor rss-item-title)
+  ((about :initarg :about :accessor rss-item-about)
+   (title :initarg :title :accessor rss-item-title)
    (link :initarg :link :accessor rss-item-link)
    (desc :initform nil :initarg :desc :accessor rss-item-desc)))
 
 (defmethod rss-to-xml ((item rss-item))
-  (html `()))
+  (xml `((item "rdf:about" ,(rss-item-about item))
+	 (title ,(xml-escape (rss-item-title item)))
+	 (link ,(rss-item-link item))
+	 ,(if (rss-item-desc item)
+	    `(description ,(xml-escape (rss-item-desc item)))
+	    ""))))
 
 (defclass rss-textinput ()
-  ((title :initarg :title :accessor rss-textinput-title)
+  ((about :initarg :about :accessor rss-textinput-about)
+   (title :initarg :title :accessor rss-textinput-title)
    (desc :initarg :desc :accessor rss-textinput-desc)
    (link :initarg :link :accessor rss-textinput-link)
    (name :initarg :name :accessor rss-textinput-name)))
 
 (defmethod rss-to-xml ((textinput rss-textinput))
-  (html `()))
+  (xml `((textinput "rdf:about" ,(rss-textinput-about textinput))
+	 (title ,(xml-escape (rss-textinput-title textinput)))
+	 (description ,(xml-escape (rss-textinput-desc textinput)))
+	 (name ,(xml-escape (rss-textinput-name textinput)))
+	 (link ,(rss-textinput-link textinput)))))
 
    
    

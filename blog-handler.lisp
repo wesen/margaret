@@ -2,18 +2,11 @@
 
 ;;; new blog-post
 
-;(defclass margaret-blogrss-handler ((margaret-rss-handler) method request)
-;  ())
+(defclass margaret-blogrss-handler ((margaret-rss-handler) method request)
+  ())
 
-;(defmethod rss-feed ((handler margaret-rss-handler) method request)
-;  (html `((rdf:RDF "xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
-;		   "xmlns:dc=\"http://purl.org/dc/elements/1.1/\""
-;		   "xmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\""
-;		   "xmlns:admin=\"http://webns.net/mvcb/\""
-;		    "xmlns=\"http://purl.org/rss/1.0/\">")
-;	  "bla"))
-;	 
-;  )
+(defmethod rss-feed ((handler margaret-rss-handler) method request)
+  (rss-to-xml (blog-to-rss)))
 
 (defclass margaret-blogpost-handler (margaret-auth-handler)
   ())
@@ -58,7 +51,7 @@
 			  (post (when id (get-blog-post id))))
 		      (when user
 			(if post
-			  (progn (setf (blog-post-title post) title
+			  (progn (setf (blog-post-title post) titl
 				       (blog-post-body post) body
 				       (blog-post-author post) (user-name user))
 				 (update-blog-post post))

@@ -46,6 +46,7 @@
 
 (defun blog-post-to-html (blog-post)
   `((div :class blog-post)
+    ((a :name ,(blog-post-id blog-post)))
     (table (tr ((td :class title) 
 		,(html-escape (blog-post-title blog-post))
 		((span :class commands)
@@ -59,3 +60,26 @@
 		#l"on " ,(blog-post-date blog-post)))
 	   (tr ((td :class body)
 		,(blog-post-body blog-post))))))
+
+(defun blog-post-to-rss-item (blog-post)
+  (let ((url (urlstring (merge-url *margaret-url*
+				   (format nil "blog#~a" (blog-post-id blog-post))))))
+  (make-instance 'rss-item
+    :about url
+    :title (blog-post-title blog-post)
+    :url url
+    :desc (blog-post-body blog-post))))
+
+(defun blog-to-rss ()
+  (let* ((blog-posts (get-blog-posts))
+	 (rss-items (mapcar #'blog-post-to-rss-item blog-posts))
+	 (rss-channel (make-instance 'rss-channel
+			:about (urlstring (merge-url *margaret-url* "blog/rss.xml"))
+			:title "MARGARET blog"
+			:about (urlstring (merge-url *margaret-url* "blog"))
+			:desc "The MARGARET blog"
+			:items (mapcar #'rss-item-link rss-items))))
+    (make-instance 'rss-feed :channel rss-channel
+		   :items rss-items)))
+			
+    
