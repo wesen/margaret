@@ -48,7 +48,7 @@
 	((symbolp value)
 	 (format nil "'~a'" value))
 	((consp value)
-	 (format nil "'(~{~A~^, ~})'" value))
+	 (format nil "'(~{~A~^ ~})'" value))
 	(t (princ-to-string value))))
 
 (defun sql-insert (table values &key fields)

@@ -67,7 +67,7 @@
   (make-instance 'rss-item
     :about url
     :title (blog-post-title blog-post)
-    :url url
+    :link url
     :desc (blog-post-body blog-post))))
 
 (defun blog-to-rss ()
@@ -76,7 +76,7 @@
 	 (rss-channel (make-instance 'rss-channel
 			:about (urlstring (merge-url *margaret-url* "blog/rss.xml"))
 			:title "MARGARET blog"
-			:about (urlstring (merge-url *margaret-url* "blog"))
+			:link (urlstring (merge-url *margaret-url* "blog"))
 			:desc "The MARGARET blog"
 			:items (mapcar #'rss-item-link rss-items))))
     (make-instance 'rss-feed :channel rss-channel

@@ -22,7 +22,6 @@
 
 (defmethod handle-request-response ((handler margaret-rss-handler) method request)
   (request-send-headers request :content-type "xml/rss")
-  (write-sequence "<?xml version=\"1.0\"?>" (request-stream request))
   (write-sequence (rss-feed handler method request) (request-stream request)))
 
 (defclass margaret-handler (handler) 

@@ -2,10 +2,10 @@
 
 ;;; new blog-post
 
-(defclass margaret-blogrss-handler ((margaret-rss-handler) method request)
+(defclass margaret-blogrss-handler (margaret-rss-handler)
   ())
 
-(defmethod rss-feed ((handler margaret-rss-handler) method request)
+(defmethod rss-feed ((handler margaret-blogrss-handler) method request)
   (rss-to-xml (blog-to-rss)))
 
 (defclass margaret-blogpost-handler (margaret-auth-handler)
@@ -69,10 +69,13 @@
   ())
 
 (defmethod page-header revlist ((handler margaret-blog-handler) method request)
-  `((a :href ,(urlstring (merge-url *margaret-url* "newblogpost")))
-    #l"New blog post"))
+  `(()
+    ((a :href ,(urlstring (merge-url *margaret-url* "newblogpost")))
+     #l"New blog post")
+    ((a :href ,(urlstring (merge-url *margaret-url* "blog/rss.xml")))
+     #l"Syndicate this site")))
 
-(defmethod page-body revlist ((handler margaret-blog-handler) method request)
+  (defmethod page-body revlist ((handler margaret-blog-handler) method request)
   (with-url-params (offset) (request-url request)
      (if offset
 	 (setf offset (parse-integer offset))
@@ -112,7 +115,10 @@
 		   (make-instance 'margaret-blogpost-handler
 		     :title #l"MARGARET New blog posting"
 		     :capabilities '(blog))
-		   (merge-url *margaret-url* "/newblogpost") nil)  
+		   (merge-url *margaret-url* "/newblogpost") nil)
+  (install-handler *root-handler*
+		   (make-instance 'margaret-blogrss-handler)
+		   (merge-url *margaret-url* "/blog/rss.xml") nil)
   (install-handler *root-handler*
 		   (make-instance 'margaret-blog-handler
 				  :title #l"MARGARET Blog")
